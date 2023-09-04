@@ -1,5 +1,6 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Index() {
   const { user, error, isLoading } = useUser();
@@ -13,10 +14,10 @@ export default function Index() {
         {user.picture && <Image src={user.picture} alt='avatar' width={50} height={50} />}
         <p>Welcome {user.name}!</p>
         <p>Your email: {user.email}</p>
-        <a href="/api/auth/logout">Logout</a>
+        <Link href="/api/auth/logout">Logout</Link>
       </div>
     );
   }
 
-  return <a href="/api/auth/login">Login</a>;
+  return <Link href="/api/auth/login">Login</Link>;
 }
